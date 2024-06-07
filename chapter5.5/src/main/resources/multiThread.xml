@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<suite name="thread" parallel="methods" thread-count="3">
+<!--<suite name="thread" parallel="tests" thread-count="3">-->
+<!--<suite name="thread" parallel="classes" thread-count="3">-->
+
+    <!--
+    thread-count：代表 最大并发线程数
+
+    parallel
+    methods级别（用的较多）：所有用例都可以在不同的线程下执行
+    tests级别：不同的test tag下的用例可以在不同的线程下执行，
+              相同的test tag下的用例只能在同一个线程中执行
+    class级别（有疑问，较少使用）：不同的class tag下的用例可以在不同的线程中执行
+              相同的class tag下的用例在同一个线程中执行
+
+    xml文件配置这种方式不能指定线程池，只有方法上才可以指定线程池
+
+    -->
+    <test name="demo1">
+        <classes>
+            <class name="com.course.testng.multiThread.MultiThreadOnXml"/>
+        </classes>
+    </test>
+
+    <test name="demo2">
+        <classes>
+            <class name="com.course.testng.multiThread.MultiThreadOnXml2"/>
+        </classes>
+    </test>
+
+</suite>
