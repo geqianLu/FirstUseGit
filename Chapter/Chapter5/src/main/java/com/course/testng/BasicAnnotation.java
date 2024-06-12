@@ -4,6 +4,7 @@ import org.testng.annotations.*;
 
 public class BasicAnnotation {
 
+    //基本注解
     @Test
     public void testCase1(){
         System.out.print("这是第一条测试用例1");
