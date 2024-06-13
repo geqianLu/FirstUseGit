@@ -1,0 +1,36 @@
+[
+  {
+    "description": "mock一个需要携带cookies信息的get请求",
+    "request": {
+      "uri": "/get/with/cookies",
+      "method": "get",
+      "cookies": {
+        "login": "true"
+      }
+    },
+    "response": {
+      "text": "这是一个需要携带cookies的get请求"
+    }
+  },
+  {
+    "description": "mock一个需要携带cookies信息的post请求",
+    "request": {
+      "uri": "/post/with/cookies",
+      "method": "post",
+      "cookies": {
+        "login": "true"
+      },
+      "forms": {
+        "name": "zhangsan",
+        "age": "18"
+      }
+    },
+    "response": {
+      "status": "200",
+      "json": {
+        "zhangsan": "success",
+        "code": "12138"
+      }
+    }
+  }
+]

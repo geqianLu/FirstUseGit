@@ -1,0 +1,26 @@
+[
+  {
+    "description": "mock一个需要携带header信息的post请求",
+    "request": {
+      "uri": "/post/with/headers",
+      "method": "post",
+      "cookies": {
+        "login": "true"
+      },
+      "headers": {
+        "content-type": "application/json"
+      },
+      "json": {
+        "name": "zhangsan",
+        "age": "18"
+      }
+    },
+    "response": {
+      "status": "200",
+      "json": {
+        "wanglaosi": "success",
+        "code": "12121"
+      }
+    }
+  }
+]

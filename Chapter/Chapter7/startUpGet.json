@@ -1,0 +1,26 @@
+[
+  {
+    "description": "模拟一个不带参数的get请求",
+    "request": {
+      "uri": "/getwithoutparam",
+      "method": "get"
+    },
+    "response": {
+      "text": "不带参数的get请求的response"
+    }
+  },
+  {
+    "description": "模拟一个带参数的get请求",
+    "request": {
+      "uri": "/getwithparam",
+      "method": "get",
+      "queries": {
+        "name": "zhangsan",
+        "age": "18"
+      }
+    },
+    "response": {
+      "text": "带参数的get请求的response返回了18岁的zhangsan"
+    }
+  }
+]
