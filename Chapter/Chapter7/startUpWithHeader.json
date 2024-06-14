@@ -10,7 +10,7 @@
       "headers": {
         "content-type": "application/json"
       },
-      "json": {
+      "forms": {
         "name": "zhangsan",
         "age": "18"
       }

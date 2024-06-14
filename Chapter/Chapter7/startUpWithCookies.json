@@ -1,5 +1,18 @@
 [
   {
+    "description": "mock一个可以返回cookies信息的get请求",
+    "request": {
+      "uri": "/getCookies",
+      "method": "get"
+    },
+    "response": {
+      "cookies": {
+        "login": "true"
+      },
+      "text": "恭喜你获得cookies信息成功"
+    }
+  },
+  {
     "description": "mock一个需要携带cookies信息的get请求",
     "request": {
       "uri": "/get/with/cookies",
@@ -20,7 +33,10 @@
       "cookies": {
         "login": "true"
       },
-      "forms": {
+      "headers": {
+        "content-type": "application/json"
+      },
+      "json": {
         "name": "zhangsan",
         "age": "18"
       }
