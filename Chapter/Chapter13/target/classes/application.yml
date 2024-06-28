@@ -1,0 +1,20 @@
+server:
+  port: 8888
+
+logging:
+  path: logs
+  file: userManeger.log
+
+spring:
+  application:
+    name: userManeger
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.4.250:3306/bestsign_automation
+    username: bestsign
+    password: ssqian123
+
+mybatis:
+  type-aliases-package: com.course.model
+  mapper-locations:
+    - mapper/*
