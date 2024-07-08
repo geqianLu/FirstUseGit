@@ -1,0 +1,4 @@
+com/course/Application.class
+com/course/config/SwaggerConfig.class
+com/course/model/User.class
+com/course/controller/UserManager.class

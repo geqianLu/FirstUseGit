@@ -24,6 +24,7 @@ public class GetUserInfoTest {
 
     @Test(dependsOnGroups = "loginTrue",description = "获取userId为1的用户信息")
     public void getUserInfo() throws IOException, InterruptedException {
+        //从数据库查询case
         SqlSession sqlSession = DatabaseUtil.getSqlSession();
         GetUserInfoCase getUserInfoCase = sqlSession.selectOne("getUserInfoCase",1);
         System.out.println(getUserInfoCase.toString());

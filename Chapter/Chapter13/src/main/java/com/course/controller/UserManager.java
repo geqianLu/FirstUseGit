@@ -5,7 +5,6 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,7 +45,7 @@ public class UserManager {
     public Boolean addUser(HttpServletRequest request,@RequestBody User user){
         Boolean x = verifyCookies(request);
         int result = 0;
-        if(x != false){
+        if(x){
             result = template.insert("addUser",user);
         }
         if(result > 0){
@@ -60,7 +59,7 @@ public class UserManager {
     @ApiOperation(value = "获取用户（列表）信息接口",httpMethod = "POST")
     public List<User> getUserInfo(HttpServletRequest request,@RequestBody User user){
         Boolean x = verifyCookies(request);
-        if(x == true){
+        if(x){
            List<User> users =  template.selectList("getUserInfo",user);
            log.info("查询到的用户总数是"+ users.size());
            return users;
@@ -73,7 +72,7 @@ public class UserManager {
     public int updateUser(HttpServletRequest request,@RequestBody User user){
         Boolean x = verifyCookies(request);
         int i = 0;
-        if(x == true){
+        if(x){
             i = template.update("updateUserInfo",user);
             log.info("更新的用户数量是"+ i);
         }

@@ -69,4 +69,10 @@
         AND id = #{userId}
     </select>
 
+    <!--根据userName查询userId-->
+    <select id="getUserId" parameterType="com.course.model.User" resultType="integer">
+        select id from test_pierce_user where
+        userName = #{userName}
+        and isDelete = 0;
+    </select>
 </mapper>

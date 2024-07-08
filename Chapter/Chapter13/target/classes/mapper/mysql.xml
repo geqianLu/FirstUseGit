@@ -33,7 +33,7 @@
         </trim>
     </select>
 
-    <!--更新/删除用户接口sql-->
+    <!--根据id更新/删除用户接口sql-->
     <update id="updateUserInfo" parameterType="com.course.model.User">
         update test_pierce_user
         <trim prefix="SET" suffixOverrides=",">

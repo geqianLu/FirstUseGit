@@ -14,7 +14,7 @@ public class ConfigFile {
      * @return
      */
     public static String getUrl(InterfaceName interfaceName){
-        String host = bundle.getString("test.url");
+        String host = bundle.getString("test.host");
         String uri = "";
         //完整的测试url
         String testUrl;

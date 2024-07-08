@@ -20,6 +20,7 @@ import java.util.List;
 public class GetUserListTest {
     @Test(dependsOnGroups = "loginTrue",description = "获取性别为男性的用户信息")
     public void getUserList() throws IOException, InterruptedException {
+        //从数据库查询case
         SqlSession sqlSession = DatabaseUtil.getSqlSession();
         GetUserListCase getUserListCase = sqlSession.selectOne("getUserListCase",1);
         System.out.println(getUserListCase.toString());

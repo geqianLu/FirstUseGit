@@ -27,6 +27,8 @@
                 <methods>
                     <include name="updateUserInfo"/>
                     <include name="deleteUser"/>
+                    <include name="deleteAddUser"/>
+                    <include name="recoverUser"/>
                 </methods>
             </class>
         </classes>

@@ -11,6 +11,7 @@ import org.apache.http.util.EntityUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.json.JSONObject;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
@@ -19,6 +20,7 @@ public class AddUserTest {
 
     @Test(dependsOnGroups = "loginTrue",description = "添加用户接口测试")
     public void addUser() throws IOException, InterruptedException {
+        //从数据库查询case
         SqlSession sqlSession = DatabaseUtil.getSqlSession();
         AddUserCase addUserCase = sqlSession.selectOne("addUserCase",1);
         System.out.println(addUserCase.toString());

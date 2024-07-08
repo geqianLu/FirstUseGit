@@ -1,6 +1,7 @@
 package com.course.cases;
 
 import com.course.config.TestConfig;
+import com.course.model.AddUserCase;
 import com.course.model.UpdateUserInfoCase;
 import com.course.model.User;
 import com.course.utils.DatabaseUtil;
@@ -18,6 +19,7 @@ import java.io.IOException;
 public class UpdateUserInfoTest {
     @Test(dependsOnGroups = "loginTrue",description = "更改用户信息测试")
     public void updateUserInfo() throws IOException, InterruptedException {
+        //从数据库查询case
         SqlSession sqlSession = DatabaseUtil.getSqlSession();
         UpdateUserInfoCase updateUserInfoCase = sqlSession.selectOne("updateUserInfoCase",1);
         System.out.println(updateUserInfoCase.toString());
@@ -36,6 +38,7 @@ public class UpdateUserInfoTest {
 
     @Test(dependsOnGroups = "loginTrue",description = "删除用户信息测试")
     public void deleteUser() throws IOException, InterruptedException {
+        //从数据库查询case
         SqlSession sqlSession = DatabaseUtil.getSqlSession();
         UpdateUserInfoCase updateUserInfoCase = sqlSession.selectOne("updateUserInfoCase",2);
         System.out.println(updateUserInfoCase.toString());
@@ -50,6 +53,43 @@ public class UpdateUserInfoTest {
         //断言
         Assert.assertNotNull(user);
         Assert.assertNotNull(result);
+    }
+
+    @Test(dependsOnGroups = "loginTrue",description = "恢复刚刚update的用户信息")
+    public void recoverUser() throws IOException, InterruptedException {
+        //先从数据库查询刚刚update的的userId
+        SqlSession sqlSession = DatabaseUtil.getSqlSession();
+        UpdateUserInfoCase updateUserInfoCase = sqlSession.selectOne("updateUserInfoCase",1);
+        Integer userId = updateUserInfoCase.getUserId();
+
+        //再new一个新的updateUserInfoCase
+        UpdateUserInfoCase updateUserInfoCaseNew = new UpdateUserInfoCase();
+        updateUserInfoCaseNew.setUserId(userId);
+        updateUserInfoCaseNew.setUserName("lisi");
+        System.out.println(updateUserInfoCaseNew.toString());
+        System.out.println(TestConfig.updateUserInfoUrl);
+
+        //发送请求
+        getResult(updateUserInfoCaseNew);
+    }
+
+
+    @Test(dependsOnGroups = "loginTrue",description = "删除刚刚添加的用户信息")
+    public void deleteAddUser() throws IOException{
+        //先从数据库查询刚刚添加的userName
+        SqlSession sqlSession = DatabaseUtil.getSqlSession();
+        AddUserCase addUserCase= sqlSession.selectOne("addUserCase",1);
+        String userName = addUserCase.getUserName();
+        Integer userId = sqlSession.selectOne("getUserId",userName);
+        //再从数据库查询添加的userId
+        UpdateUserInfoCase updateUserInfoCase = new UpdateUserInfoCase();
+        updateUserInfoCase.setUserId(userId);
+        updateUserInfoCase.setIsDelete("1");
+        System.out.println(updateUserInfoCase.toString());
+        System.out.println(TestConfig.updateUserInfoUrl);
+
+        //发送请求
+        getResult(updateUserInfoCase);
     }
 
     private int getResult(UpdateUserInfoCase updateUserInfoCase) throws IOException {
