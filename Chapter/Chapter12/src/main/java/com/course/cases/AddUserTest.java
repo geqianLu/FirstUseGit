@@ -11,7 +11,6 @@ import org.apache.http.util.EntityUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.json.JSONObject;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;

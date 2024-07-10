@@ -2,8 +2,6 @@ package com.course.testng.parameter;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.collections.Objects;
-
 import java.lang.reflect.Method;
 
 public class DataProvidertest {

@@ -60,7 +60,7 @@ public class UpdateUserInfoTest {
         //先从数据库查询刚刚update的的userId
         SqlSession sqlSession = DatabaseUtil.getSqlSession();
         UpdateUserInfoCase updateUserInfoCase = sqlSession.selectOne("updateUserInfoCase",1);
-        Integer userId = updateUserInfoCase.getUserId();
+        int userId = updateUserInfoCase.getUserId();
 
         //再new一个新的updateUserInfoCase
         UpdateUserInfoCase updateUserInfoCaseNew = new UpdateUserInfoCase();

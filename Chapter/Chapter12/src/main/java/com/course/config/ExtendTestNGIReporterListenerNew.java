@@ -104,11 +104,12 @@ public class ExtendTestNGIReporterListenerNew implements IReporter {
 
         extent.flush();
 
+        //如果index.html打开仍然显示不正常，再取消注解这段代码
         //修改html文件内容，引用本地的css和js文件,并以当前时间点作为报告名称的一部分
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//获取当前时间
-        String dateStr=simpleDateFormat.format(new Date());
-        String reportFinalName="autoTestReport"+dateStr+".html";
-        changeContent(OUTPUT_FOLDER + FILE_NAME,OUTPUT_FOLDER + reportFinalName);
+//        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");//获取当前时间
+//        String dateStr=simpleDateFormat.format(new Date());
+//        String reportFinalName="autoTestReport"+dateStr+".html";
+//        changeContent(OUTPUT_FOLDER + FILE_NAME,OUTPUT_FOLDER + reportFinalName);
     }
 
     private void init() {
@@ -134,37 +135,38 @@ public class ExtendTestNGIReporterListenerNew implements IReporter {
 
     }
 
+    //如果index.html打开仍然显示不正常，再取消注解 changeContent 这个方法
     //读取最初生成的HTML报告文件内容并替换内容中的CSS和JS文件路径为本地路径下的CSS和JS文件
-    private static void changeContent(String filePath, String savePath) {
-        // filePath 要读取的文件 savePath 要写入的文件
-        BufferedReader br = null;
-        BufferedWriter bw = null;
-
-        try {
-            // 以下读取和写入都转成UTF-8 防止乱码
-            br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
-            bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(savePath), "UTF-8"));
-            String line = null;
-            while ((line = br.readLine()) != null && (line != "")) {
-                //替换html文件中的这个链接为本地的resource文件夹路径
-                bw.write(line.replaceAll("http://extentreports.com/resx/dist/", "../src/main/resources/"));
-            }
-            bw.flush();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (br != null){
-                    br.close();
-                }
-                if (bw != null){
-                    bw.close();
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-    }
+//    private static void changeContent(String filePath, String savePath) {
+//        // filePath 要读取的文件 savePath 要写入的文件
+//        BufferedReader br = null;
+//        BufferedWriter bw = null;
+//
+//        try {
+//            // 以下读取和写入都转成UTF-8 防止乱码
+//            br = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
+//            bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(savePath), "UTF-8"));
+//            String line = null;
+//            while ((line = br.readLine()) != null && (line != "")) {
+//                //替换html文件中的这个链接为本地的resource文件夹路径
+//                bw.write(line.replaceAll("http://extentreports.com/resx/dist/", "../src/main/resources/"));
+//            }
+//            bw.flush();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            try {
+//                if (br != null){
+//                    br.close();
+//                }
+//                if (bw != null){
+//                    bw.close();
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+//    }
 
 
     private void buildTestNodes(ExtentTest extenttest, IResultMap tests, Status status) {
