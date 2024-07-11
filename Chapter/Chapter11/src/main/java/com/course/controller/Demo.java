@@ -33,7 +33,7 @@ public class Demo {
     @RequestMapping(value ="/updateUserById",method = RequestMethod.POST)
     @ApiOperation(value ="更新用户",httpMethod = "POST")
     public int updateUser(@RequestBody User user){
-        return template.delete("updateUserById",user);
+        return template.update("updateUserById",user);
     }
 
     @RequestMapping(value = "/deleteUserById",method = RequestMethod.DELETE)

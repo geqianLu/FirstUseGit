@@ -1,4 +1,4 @@
-启动jar包：java -jar jar包目录 协议类型 -p 端口号 -c json配置文件
+启动jar包：java -jar jar包目录 协议类型 -p 端口号 -c json配置文件(即mock的接口)
 举例如：java -jar ./moco-runner-0.11.0-standalone.jar http -p 8888 -c demo1.json
 
 启动后 可以本地访问：http://localhost:8888/{uri}
